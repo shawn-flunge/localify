@@ -4,3 +4,5 @@
 .DS_Store
 pubspec.lock
 localify.yaml
+
+.idea/
