@@ -1,7 +1,7 @@
 name: localify
-description: A sample command-line application.
+description: Simplify and accelerate localization by effortlessly converting team-sourced data from tools like Google Sheets and Notion into app resource bundles (ARB), making the process easier.
 version: 0.0.1
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/shawn-flunge/localify
 
 environment:
   sdk: ^3.0.5
