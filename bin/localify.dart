@@ -3,6 +3,8 @@
 import 'package:localify/localify.dart';
 import 'package:localify/src/processes/generate/generate_output.dart';
 
+import 'commands/generate.dart';
+
 void main(List<String> arguments) async{
   final commandRunner = CommandRunner<Configuration>(programName, 'description')
     ..addCommand(GenerateCommand());

@@ -4,10 +4,11 @@
 
 
 import 'package:args/command_runner.dart';
-import 'package:localify/src/commands/generate.dart';
 import 'package:localify/src/configuration.dart';
 import 'package:localify/src/constants.dart';
 import 'package:test/test.dart';
+
+import '../bin/commands/generate.dart';
 
 
 

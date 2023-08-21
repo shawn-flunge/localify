@@ -5,8 +5,9 @@ import 'dart:async';
 
 import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
-import 'package:localify/src/commands/utils/config_from_yaml.dart';
 import 'package:localify/src/configuration.dart';
+
+import 'utils/config_from_yaml.dart';
 
 class GenerateCommand extends Command<Configuration>{
 
