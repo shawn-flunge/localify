@@ -1,0 +1,33 @@
+name: localify_example
+description: example yaml file for using localify
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  localify: ^0.0.1
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/i18n/
+
+localify:
+  output_dir: ./assets/i18n
+  output_extension: json
+  google_sheets:
+    credential_json_path: ./secret/my-project-2-307705-926b3aa95d83-2.json
+    spread_sheet_id: spread_sheet_id
+    sheet_name: sheet_name
