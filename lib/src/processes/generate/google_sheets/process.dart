@@ -134,7 +134,6 @@ recursive(Rows range, int i, Map<String, dynamic> accumulated, int preDepth, int
     if(range.length <= i+1){
       /// todo : 에러 메시지 다듬기
       throw 'There is a wrong structure at properties of "A"';
-      return parsedRow;
     }
 
     // print('홀 $i / $parsedRow / ${range[i]}');

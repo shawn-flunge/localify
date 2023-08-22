@@ -12,13 +12,13 @@ Future<bool> generateOutputFromConfig(Configuration config) async{
 
     final rawData = await fetchRawDataFromService(config);
 
-    final success = switch (config.source){
+    final bool success = await switch (config.source){
       DataSource.googleSheets => generateOutputsFromGoogleSheetsData(config, rawData),
-      DataSource.notion => print('doesn\'t support yet')
+      DataSource.notion => throw 'Notion is not supported now'
     };
     /// todo : return "success"
-    return true;
-  } catch(e, s){
+    return success;
+  } catch(e){
     print(e);
     return false;
   }

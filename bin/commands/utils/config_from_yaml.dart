@@ -21,7 +21,7 @@ Future<Configuration> parseConfigurationFromYaml(String path, bool isCompact) as
     final config = target.asMap();
 
     return Configuration.fromYaml(config)..isCompact=isCompact;
-  } on PathNotFoundException catch(e){
+  } on PathNotFoundException {
     print('Can\'t find "localify.yaml" so try to find in pubspec.yaml');
     return parseConfigurationFromYaml('pubspec.yaml', isCompact);
   } on _YamlIsNullException catch(e){
@@ -33,9 +33,8 @@ Future<Configuration> parseConfigurationFromYaml(String path, bool isCompact) as
 }
 
 class _YamlIsNullException implements Exception{
-  _YamlIsNullException([this.message = 'There is nothing to read in your Yaml file']);
+  _YamlIsNullException();
 
-  final String message;
   @override
   String toString() => 'There is nothing to read in your Yaml file';
 }

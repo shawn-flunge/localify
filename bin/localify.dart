@@ -15,7 +15,11 @@ void main(List<String> arguments) async{
     if(result == null) return;
 
     final bool success = await generateOutputFromConfig(result);
-
+    if(success){
+      print('Your work is successfully done!');
+    } else{
+      print('Something went wrong.');
+    }
   } catch(e){
     print(e);
   }
