@@ -1,7 +1,7 @@
 name: localify
 description: Simplify and accelerate localization by effortlessly converting team-sourced data from tools like Google Sheets and Notion into app resource bundles (ARB), making the process easier.
 version: 0.0.1
-homepage: https://github.com/shawn-flunge/localify
+homepage: https://shawnthegreat.dev
 repository: https://github.com/shawn-flunge/localify
 
 environment:
