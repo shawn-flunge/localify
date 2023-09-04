@@ -63,6 +63,6 @@ class Configuration {
 _createSourceFromYaml(Map<String, dynamic> yaml){
 
   final sources = DataSource.values.where((element) => yaml[element.name] != null );
-  if(sources.length != 1) throw 'it needs only one data source';
+  if(sources.length != 1) throw 'you have to choose only one of datasources, either google_sheets or notion_database.';
   return sources.first;
 }
