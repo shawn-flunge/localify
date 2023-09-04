@@ -14,15 +14,14 @@ Future<String> fetchRawDataFromService(Configuration config) async{
 
   final http.Client client = await switch(config.source){
     DataSource.googleSheets => _googleAuthClient(config),
-    DataSource.notionDatabase => _notionAuthClient()
+    DataSource.notionDatabase => _notionAuthClient(config)
   };
 
-  final String url = switch(config.source){
-    DataSource.googleSheets => '$googleSheetsBaseUrl/${config['spread_sheet_id']}/values:batchGet?ranges=${config['sheet_name']}&valueRenderOption=FORMATTED_VALUE',
-    DataSource.notionDatabase => 'https://www.notion.com'
+  final response = await switch(config.source){
+    DataSource.googleSheets => client.get(Uri.parse('$googleSheetsBaseUrl/${config['spread_sheet_id']}/values:batchGet?ranges=${config['sheet_name']}&valueRenderOption=FORMATTED_VALUE')),
+    DataSource.notionDatabase => client.post(Uri.parse('$notionDatabaseBaseUrl/${config['database_key']}/query'))
   };
 
-  final response = await client.get(Uri.parse(url));
   client.close();
   if(response.statusCode != 200){
     throw 'wrong request or response';
@@ -47,8 +46,12 @@ _googleAuthClient(Configuration config) async{
   return clientViaServiceAccount(accountCredentials, scopes);
 }
 
-_notionAuthClient() async{
-  final Map<String, String> header = {};
+_notionAuthClient(Configuration config) async{
+  final Map<String, String> header = {
+    'Authorization' : 'Bearer ${config['bearer_token']}',
+    'Notion-Version' : '2022-06-28',
+    'Content-Type' : 'application/json'
+  };
 
   return _AuthenticatedHttpClient(header);
 }
@@ -69,5 +72,10 @@ class _AuthenticatedHttpClient extends http.BaseClient {
   @override
   Future<http.Response> get(Uri url, {Map<String, String>? headers}) {
     return _inner.get(url, headers: authHeader);
+  }
+
+  @override
+  Future<http.Response> post(Uri url, {Map<String, String>? headers, Object? body, Encoding? encoding}) {
+    return _inner.post(url, headers: authHeader);
   }
 }
