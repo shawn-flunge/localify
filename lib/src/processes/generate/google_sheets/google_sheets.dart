@@ -22,12 +22,8 @@ Future<bool> generateOutputsFromGoogleSheetsData(Configuration config, String ra
   final (keyIndex, languages) = _parseTableHeader(rows.first);
   _fillEmptyCells(rows);
 
-  final languages2 = _parseToLanguageMap(config.isCompact, rows, keyIndex, languages);
-
-  final bool success = await switch(config.outputExtension){
-    OutputExtension.json => _generateJsonFiles(config.outputDir, languages2),
-    OutputExtension.arb => _generateArbFiles()
-  };
+  final sources = _parseToLanguageMap(config.isCompact, rows, keyIndex, languages);
+  final bool success = await _generateFromSource(config, sources);
 
   return success;
 }

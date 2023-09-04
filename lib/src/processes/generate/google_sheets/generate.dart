@@ -5,12 +5,12 @@ part of 'google_sheets.dart';
 const _tab = '\t';
 const _new = '\n';
 
-Future<bool> _generateJsonFiles(String path, Map<String, Map<String, dynamic>> data) async {
+Future<bool> _generateFromSource(Configuration config, Map<String, Map<String, dynamic>> data) async {
   try {
-    final directory = await Directory(path).create(recursive: true);
+    final directory = await Directory(config.outputDir).create(recursive: true);
 
     for (var element in data.entries) {
-      final file = File('${directory.path}/${element.key}.json');
+      final file = File('${directory.path}/${element.key}.${config.outputExtension}');
       final sink = file.openWrite();
       sink.write(element.value.asJson());
       sink.close();
@@ -18,15 +18,11 @@ Future<bool> _generateJsonFiles(String path, Map<String, Map<String, dynamic>> d
 
     return true;
   } catch (e, s) {
-    print('failed making json $e\n$s');
+    print('failed making outputs\n$e\n$s');
     return false;
   }
 }
 
-Future<bool> _generateArbFiles() async{
-  print('doesn\'t support yet');
-  return false;
-}
 
 extension _MapExtension on Map{
 
