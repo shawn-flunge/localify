@@ -10,8 +10,11 @@ enum DataSource{
 }
 
 enum OutputExtension{
-  json,
-  arb;
+  json('json'),
+  arb('arb');
+
+  final String _str;
+  const OutputExtension(this._str);
 
   static OutputExtension fromJson(String value){
     if(value == 'json') {
@@ -19,8 +22,10 @@ enum OutputExtension{
     } else {
       return OutputExtension.arb;
     }
-
   }
+
+  @override
+  String toString() => _str;
 }
 
 class Configuration {
