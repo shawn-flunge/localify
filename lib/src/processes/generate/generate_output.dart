@@ -14,7 +14,7 @@ Future<bool> generateOutputFromConfig(Configuration config) async{
 
     final bool success = await switch (config.source){
       DataSource.googleSheets => generateOutputsFromGoogleSheetsData(config, rawData),
-      DataSource.notion => throw 'Notion is not supported now'
+      DataSource.notionDatabase => throw 'Notion is not supported now'
     };
     /// todo : return "success"
     return success;

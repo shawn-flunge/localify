@@ -14,12 +14,12 @@ Future<String> fetchRawDataFromService(Configuration config) async{
 
   final http.Client client = await switch(config.source){
     DataSource.googleSheets => _googleAuthClient(config),
-    DataSource.notion => _notionAuthClient()
+    DataSource.notionDatabase => _notionAuthClient()
   };
 
   final String url = switch(config.source){
     DataSource.googleSheets => '$googleSheetsBaseUrl/${config['spread_sheet_id']}/values:batchGet?ranges=${config['sheet_name']}&valueRenderOption=FORMATTED_VALUE',
-    DataSource.notion => 'https://www.notion.com'
+    DataSource.notionDatabase => 'https://www.notion.com'
   };
 
   final response = await client.get(Uri.parse(url));

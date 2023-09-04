@@ -1,7 +1,7 @@
 
 enum DataSource{
   googleSheets('google_sheets', ['spread_sheet_id', 'sheet_name', 'credential_json_path']),
-  notion('notion', ['']);
+  notionDatabase('notion_database', ['database_key', 'bearer_token']);
 
   final String name;
   final List<String> needs;
