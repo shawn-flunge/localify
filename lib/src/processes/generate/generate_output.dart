@@ -4,6 +4,7 @@
 
 import 'package:localify/src/configuration.dart';
 import 'package:localify/src/processes/generate/google_sheets/google_sheets.dart';
+import 'package:localify/src/processes/generate/notion_database/notion_database.dart';
 import 'package:localify/src/processes/generate/utils/fetch_data.dart';
 
 Future<bool> generateOutputFromConfig(Configuration config) async{
@@ -14,7 +15,7 @@ Future<bool> generateOutputFromConfig(Configuration config) async{
 
     final bool success = await switch (config.source){
       DataSource.googleSheets => generateOutputsFromGoogleSheetsData(config, rawData),
-      DataSource.notionDatabase => throw 'Notion is not supported now'
+      DataSource.notionDatabase => generateOutputsFromNotionDatabase(config, rawData)
     };
     /// todo : return "success"
     return success;
