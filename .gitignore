@@ -6,3 +6,4 @@ pubspec.lock
 localify.yaml
 
 .idea/
+*.iml
