@@ -15,4 +15,19 @@ enum Escapes{
 
   final List<int> codeUnits;
   String get codeString => codeUnits.toString();
+
+  static String replace(String text){
+    final value = text.toString().replaceAllMapped(Escapes.regExp, (mapped){
+      final target = mapped.input.substring(mapped.start, mapped.end);
+      final escape = Escapes.fromCodes(target.codeUnits);
+
+      return switch(escape){
+        Escapes.backSlash => '\\\\',
+        Escapes.newLine => '\\n',
+        Escapes.hardNewLine => target,
+        Escapes.doubleQuotes => '\\"'
+      };
+    });
+    return value;
+  }
 }
