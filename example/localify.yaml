@@ -1,0 +1,12 @@
+
+localify:
+  output_dir: ./assets/i18n
+  output_extension: arb
+  # select one of the options below
+  notion_database:
+    database_key: # from url
+    bearer_token: # from notion api center
+  google_sheets:
+    credential_json_path: # path your credential located
+    spread_sheet_id: # from url
+    sheet_name: # target sheet

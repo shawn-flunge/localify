@@ -3,7 +3,7 @@
 .dart_tool/
 .DS_Store
 pubspec.lock
-localify.yaml
+./localify.yaml
 
 .idea/
 *.iml
