@@ -5,12 +5,12 @@ import 'dart:io';
 
 import 'package:localify/src/configuration.dart';
 import 'package:localify/src/processes/generate/utils/escapes.dart';
+import 'package:localify/src/types.dart' show Rows;
 
 
 part 'process.dart';
 part 'generate.dart';
 
-typedef Rows = List<List<dynamic>>;
 typedef Language = ({int index, String locale});
 
 Future<bool> generateOutputsFromGoogleSheetsData(Configuration config, String rawData) async{
@@ -18,7 +18,8 @@ Future<bool> generateOutputsFromGoogleSheetsData(Configuration config, String ra
   print('process start');
 
   final Map body = json.decode(rawData);
-  final Rows rows = body['valueRanges'][0]['values'].cast<List<dynamic>>();
+  final Rows<dynamic> rows = body['valueRanges'][0]['values'].cast<List<dynamic>>();
+
   final (keyIndex, languages) = _parseTableHeader(rows.first);
   _fillEmptyCells(rows);
 
