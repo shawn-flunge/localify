@@ -5,4 +5,4 @@
 typedef Rows<T> = List<List<T>>;
 
 /// A dart map to generate output files
-typedef LanguageMap = Map<String, Map<String, String>>;
+typedef LanguageMap = Map<String, Map<String, dynamic>>;
