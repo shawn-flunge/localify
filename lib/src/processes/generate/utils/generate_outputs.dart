@@ -1,15 +1,17 @@
 
-part of 'google_sheets.dart';
+import 'dart:io';
 
+import 'package:localify/src/configuration.dart';
+import 'package:localify/src/types.dart';
 
 const _tab = '\t';
 const _new = '\n';
 
-Future<bool> _generateFromSource(Configuration config, Map<String, Map<String, dynamic>> data) async {
-  try {
+Future<bool> generateFromSource(LanguageMap languages, Configuration config) async{
+  try{
     final directory = await Directory(config.outputDir).create(recursive: true);
 
-    for (var element in data.entries) {
+    for (var element in languages.entries) {
       final file = File('${directory.path}/${element.key}.${config.outputExtension}');
       final sink = file.openWrite();
       sink.write(element.value.asJson());
@@ -17,8 +19,8 @@ Future<bool> _generateFromSource(Configuration config, Map<String, Map<String, d
     }
 
     return true;
-  } catch (e, s) {
-    print('failed making outputs\n$e\n$s');
+  } catch(e) {
+
     return false;
   }
 }
@@ -55,6 +57,4 @@ extension _MapExtension on Map{
   }
 
 }
-
-
 

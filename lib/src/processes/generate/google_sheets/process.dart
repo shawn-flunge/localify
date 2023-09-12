@@ -29,8 +29,8 @@ void _fillEmptyCells(List<List<dynamic>> values){
 
 
 /// _parseToLanguageMap
-Map<String, Map<String, dynamic>> _parseToLanguageMap(bool compactMode, Rows rows, int keyIndex, List<Language> languages) {
-  final Map<String, Map<String, dynamic>> result = {};
+LanguageMap _parseToLanguageMap(bool compactMode, Rows rows, int keyIndex, List<Language> languages) {
+  final LanguageMap result = {};
 
   /// result에 language code 추가
   for(var lang in languages){

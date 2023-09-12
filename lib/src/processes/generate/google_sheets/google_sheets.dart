@@ -1,15 +1,14 @@
 
 
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:localify/src/configuration.dart';
 import 'package:localify/src/processes/generate/utils/escapes.dart';
-import 'package:localify/src/types.dart' show Rows;
+import 'package:localify/src/processes/generate/utils/generate_outputs.dart';
+import 'package:localify/src/types.dart';
 
 
 part 'process.dart';
-part 'generate.dart';
 
 typedef Language = ({int index, String locale});
 
@@ -24,7 +23,7 @@ Future<bool> generateOutputsFromGoogleSheetsData(Configuration config, String ra
   _fillEmptyCells(rows);
 
   final sources = _parseToLanguageMap(config.isCompact, rows, keyIndex, languages);
-  final bool success = await _generateFromSource(config, sources);
+  final bool success = await generateFromSource(sources, config);
 
   return success;
 }
