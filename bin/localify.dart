@@ -1,7 +1,8 @@
 
 
+import 'package:args/command_runner.dart';
 import 'package:localify/localify.dart';
-import 'package:localify/src/processes/generate/generate_output.dart';
+import 'package:localify/src/processes/generate/generate.dart';
 
 import 'commands/generate.dart';
 
