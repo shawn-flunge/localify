@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:localify/localify.dart';
 import 'package:localify/src/processes/generate/utils/escapes.dart';
+import 'package:localify/src/processes/generate/utils/generate_outputs.dart';
 import 'package:localify/src/types.dart';
 
 typedef LocalePair = ({String locale, String value});
@@ -17,6 +18,8 @@ Future<bool> generateOutputsFromNotionDatabase(Configuration config, String rawD
   final rows = _parseRows(results);
 
   final languages = _parseToLanguageMap(rows);
+
+  final success = await generateFromSource(languages, config);
 
   return false;
 }
