@@ -21,6 +21,10 @@ localify:
     credential_json_path: # Path to your Google Sheets API credential JSON file
     spread_sheet_id: # ID of the Google Sheet you're working on
     sheet_name: # Name of the sheet you want to parse
+  or
+  notion_database:
+    database_key: # Can find in url
+    bearer_token: # Have to generate at https://www.notion.so/my-integrations
 ```
 
 ## Features
@@ -59,5 +63,4 @@ With -c:
 This feature is coming soon. It will act as a checker, helping you notify key-value pairs that are not used in your project.
 
 ### Future Features
-- [ ] Retrieve data from `Notion`
 - [ ] Add a command `check`
