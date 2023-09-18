@@ -21,7 +21,7 @@ Future<bool> generateOutputsFromNotionDatabase(Configuration config, String rawD
 
   final success = await generateFromSource(languages, config);
 
-  return false;
+  return success;
 }
 
 

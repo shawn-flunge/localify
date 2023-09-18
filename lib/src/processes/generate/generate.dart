@@ -17,7 +17,7 @@ Future<bool> generateOutputFromConfig(Configuration config) async{
       DataSource.googleSheets => generateOutputsFromGoogleSheetsData(config, rawData),
       DataSource.notionDatabase => generateOutputsFromNotionDatabase(config, rawData)
     };
-    /// todo : return "success"
+
     return success;
   } catch(e){
     print(e);
